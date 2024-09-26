@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3xnccxum4o4j"]
+
+[ext_resource type="Script" path="res://scene/earth.gd" id="1_vcoyk"]
+[ext_resource type="Texture2D" uid="uid://da35rafht1qnj" path="res://sprites/earth.png" id="1_xnfdx"]
+[ext_resource type="Texture2D" uid="uid://mft8uibb876x" path="res://sprites/atmo.png" id="2_wrwd8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hmra"]
+radius = 444.38
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhkpd"]
+radius = 902.001
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yut32"]
+radius = 460.004
+
+[node name="Earth" type="Node2D"]
+script = ExtResource("1_vcoyk")
+
+[node name="Solid" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="Solid"]
+shape = SubResource("CircleShape2D_2hmra")
+
+[node name="Sprite2D" type="Sprite2D" parent="Solid"]
+position = Vector2(-1, -2.5)
+scale = Vector2(7, 7)
+texture = ExtResource("1_xnfdx")
+
+[node name="Atmophere" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+gravity_space_override = 3
+gravity_point = true
+gravity = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Atmophere"]
+shape = SubResource("CircleShape2D_bhkpd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Atmophere"]
+z_index = -6
+scale = Vector2(7, 7)
+texture = ExtResource("2_wrwd8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yut32")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

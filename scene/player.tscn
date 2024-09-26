@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c52bi7f5nxx4a"]
+
+[ext_resource type="Script" path="res://scene/player.gd" id="1_fb16y"]
+[ext_resource type="Texture2D" uid="uid://dly3lnpll4yhr" path="res://sprites/ship.png" id="2_ptcr7"]
+[ext_resource type="Texture2D" uid="uid://dm20ew1taogp7" path="res://sprites/parabole.png" id="3_bpcuh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sppwp"]
+radius = 27.0
+height = 58.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agb2x"]
+size = Vector2(10, 35)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_fb16y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_ptcr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sppwp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -55)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("3_bpcuh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-18, -40)
+rotation = -0.785398
+shape = SubResource("RectangleShape2D_agb2x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(17, -41)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_agb2x")

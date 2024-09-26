@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhbjvb2xkelab"]
+
+[ext_resource type="Texture2D" uid="uid://juw8v3x1g3o3" path="res://sprites/garbage1.png" id="1_7pklq"]
+[ext_resource type="Script" path="res://scene/garbage.gd" id="1_q4krj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hvkfh"]
+friction = 0.5
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ry4v"]
+radius = 18.0278
+
+[node name="garbage" type="RigidBody2D"]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_hvkfh")
+script = ExtResource("1_q4krj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ry4v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_7pklq")
